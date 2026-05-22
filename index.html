@@ -1171,6 +1171,204 @@
   .move-v2-body .var { background: rgba(230,0,126,0.12); color: var(--accent-deep); padding:1px 4px; border-radius:2px; font-weight:500; }
   .move-v2-note { padding: 10px 18px; border-top:1px solid var(--grey-200); font-size:11px; color:var(--grey-400); font-style:italic; }
 
+  /* ===== Industry detail page (after clicking a Prep card) ===== */
+  #page-industry .page { padding-top: 28px !important; }
+  #page-industry .crumb { display: none; } /* unify with the rest — back btn handles nav */
+
+  .ind-detail-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 22px;
+    align-items: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--grey-200);
+    margin-bottom: 24px;
+  }
+  @media (max-width: 720px) {
+    .ind-detail-head { grid-template-columns: auto 1fr; }
+    .ind-detail-head-meta { grid-column: 1 / -1; padding-top: 8px; border-top: 1px solid var(--grey-100); }
+  }
+  .ind-detail-icon {
+    width: 56px; height: 56px;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .ind-detail-icon svg { width: 28px; height: 28px; }
+  .ind-detail-head-text { min-width: 0; }
+  .ind-detail-title {
+    font-size: clamp(22px, 2.6vw, 30px) !important;
+    margin: 6px 0 6px !important;
+    line-height: 1.15 !important;
+  }
+  .ind-detail-pitch {
+    font-size: 13.5px;
+    color: var(--grey-600);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 70ch;
+  }
+  .ind-detail-head-meta {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--grey-400);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .ind-detail-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 880px) { .ind-detail-grid { grid-template-columns: 1fr; } }
+
+  .ind-detail-block {
+    background: #fff;
+    border: 1px solid var(--grey-200);
+    padding: 20px 22px 22px;
+  }
+  .ind-detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--grey-600);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .ind-trend { padding: 12px 0; border-bottom: 1px solid var(--grey-100); }
+  .ind-trend:first-of-type { padding-top: 4px; }
+  .ind-trend:last-child { border-bottom: none; padding-bottom: 0; }
+  .ind-trend h4 {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .ind-trend p {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .ind-challenge-list {
+    list-style: none;
+    counter-reset: chal;
+    padding: 0;
+    margin: 0;
+  }
+  .ind-challenge-list li {
+    counter-increment: chal;
+    padding: 10px 0 12px 36px;
+    border-bottom: 1px solid var(--grey-100);
+    position: relative;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .ind-challenge-list li:first-child { padding-top: 4px; }
+  .ind-challenge-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .ind-challenge-list li::before {
+    content: counter(chal, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .ind-challenge-list li:first-child::before { top: 4px; }
+
+  .ind-engs { margin-bottom: 24px; }
+  .ind-engs-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .ind-engs-count {
+    font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--grey-400);
+  }
+  .ind-eng-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 980px) { .ind-eng-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .ind-eng-grid { grid-template-columns: 1fr; } }
+  .ind-eng-card {
+    background: #fff;
+    border: 1px solid var(--grey-200);
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex; flex-direction: column; gap: 6px;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    min-height: 110px;
+  }
+  .ind-eng-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(14,27,51,0.05);
+  }
+  .ind-eng-cluster {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .ind-eng-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .ind-eng-foot {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--grey-400);
+  }
+  .ind-eng-go {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    transition: color .15s, transform .15s;
+  }
+  .ind-eng-card:hover .ind-eng-go { color: var(--accent); transform: translateX(2px); }
+
+  .ind-detail-cta {
+    display: flex;
+    gap: 10px;
+    padding-top: 4px;
+  }
+  .ind-btn-primary {
+    background: var(--accent); color: #fff; border: none;
+    padding: 11px 22px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; font-family: inherit;
+    transition: background .15s, transform .1s;
+  }
+  .ind-btn-primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .ind-btn-secondary {
+    background: #fff; color: var(--ink); border: 1px solid var(--grey-200);
+    padding: 11px 22px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; font-family: inherit;
+    transition: border-color .15s;
+  }
+  .ind-btn-secondary:hover { border-color: var(--ink); }
+
   /* ===== Prep — industry cards (4-col, polished) ===== */
   #industry-grid {
     display: grid !important;
@@ -4228,55 +4426,58 @@ function openIndustry(id) {
   const ind = INDUSTRIES[id];
   if (!ind) return;
   const body = document.getElementById('industry-detail-body');
+  const icon = INDUSTRY_SVG[id] || '';
+  const meta = INDUSTRY_COUNTS[id] || '';
+
   const engHtml = ind.engagements.map(eid => {
     const e = ENGAGEMENTS[eid]; if (!e) return '';
-    return `<div class="related-card" onclick="openEngagement('${eid}')"><div class="t">${e.title}</div><div class="arr">${e.cluster}  ·  ${e.duration}  →</div></div>`;
+    return `<div class="ind-eng-card" onclick="openEngagement('${eid}')">
+      <div class="ind-eng-cluster">${e.cluster}</div>
+      <div class="ind-eng-title">${e.title}</div>
+      <div class="ind-eng-foot"><span>${e.duration||''}</span><span class="ind-eng-go">Open →</span></div>
+    </div>`;
   }).join('');
 
   body.innerHTML = `
-    <div class="crumb">
-      <a onclick="nav('home')">Home</a>
-      <span class="sep">/</span>
-      <a onclick="nav('pre')">Prep</a>
-      <span class="sep">/</span>
-      <span>${ind.short}</span>
-    </div>
-
-    <div class="move-detail-hero">
-      <span class="eyebrow"><span class="dot"></span>Industry landing  ·  Prep</span>
-      <h1>${ind.icon}&nbsp;&nbsp;${ind.full}</h1>
-      <p class="lede">${ind.pitch}</p>
-    </div>
-
-    <div class="detail-grid">
-      <div class="detail-block">
-        <div class="label">Identified trends &amp; pressures</div>
-        ${ind.trends.map(tr => `<div style="margin-bottom:20px;"><h4 style="font-size:15px; font-weight:600; margin-bottom:6px;">${tr.t}</h4><p>${tr.d}</p></div>`).join('')}
+    <div class="ind-detail-head">
+      <div class="ind-detail-icon">${icon}</div>
+      <div class="ind-detail-head-text">
+        <span class="v2-meta">Prep · ${ind.short}</span>
+        <h1 class="v2-title ind-detail-title">${ind.full}</h1>
+        <p class="ind-detail-pitch">${ind.pitch}</p>
       </div>
-      <div class="detail-block">
-        <div class="label">Common client challenges</div>
-        <ul>${ind.challenges.map((c,i)=>`<li><span class="n">0${i+1}</span><span>${c}</span></li>`).join('')}</ul>
+      <div class="ind-detail-head-meta">${meta}</div>
+    </div>
+
+    <div class="ind-detail-grid">
+      <div class="ind-detail-block">
+        <div class="ind-detail-label">Trends &amp; pressures</div>
+        ${ind.trends.map(tr => `
+          <div class="ind-trend">
+            <h4>${tr.t}</h4>
+            <p>${tr.d}</p>
+          </div>
+        `).join('')}
+      </div>
+      <div class="ind-detail-block">
+        <div class="ind-detail-label">Common client challenges</div>
+        <ol class="ind-challenge-list">
+          ${ind.challenges.map(c => `<li>${c}</li>`).join('')}
+        </ol>
       </div>
     </div>
 
-    <div class="related" style="border-top:none; padding-top:0; margin-top:24px;">
-      <div class="label">What we solve for  ·  Relevant engagements</div>
-      <div class="related-grid">${engHtml}</div>
-      <p class="muted small" style="margin-top:24px;">Click any engagement to view the full landing page — challenges it solves, our approach, outcomes and case studies. Each is client-ready as a leave-behind.</p>
+    <div class="ind-engs">
+      <div class="ind-engs-head">
+        <div class="ind-detail-label">Most-likely offerings to surface</div>
+        <span class="ind-engs-count">${ind.engagements.length} relevant</span>
+      </div>
+      <div class="ind-eng-grid">${engHtml}</div>
     </div>
 
-    <div class="next-steps" style="margin-top:64px;">
-      <div class="label">Next step</div>
-      <ol>
-        <li><span class="n">PRE</span><span class="t">Read this page five minutes before the call. Walk in with two specific observations and one engagement type ready to discuss.</span></li>
-        <li><span class="n">DURING</span><span class="t">Use the live diagnostic to surface the best-fit engagements based on what you actually hear in the room.</span></li>
-        <li><span class="n">AFTER</span><span class="t">Send the relevant engagement page as your leave-behind, and connect with the right Consulting Director.</span></li>
-      </ol>
-    </div>
-
-    <div style="margin-top:48px; display:flex; gap:12px;">
-      <button class="btn-secondary" onclick="nav('pre')">← Industries</button>
-      <button class="btn-primary" style="flex:0 0 auto;" onclick="nav('live')">Go to live diagnostic  →</button>
+    <div class="ind-detail-cta">
+      <button class="ind-btn-secondary" onclick="nav('pre')">← All industries</button>
+      <button class="ind-btn-primary" onclick="nav('live')">Go to discovery →</button>
     </div>
   `;
   showPage('page-industry');
