@@ -1004,41 +1004,66 @@
     border-radius: 3px;
   }
 
-  /* Practice diagnostic card — highlighted hero treatment */
-  .v2-learning-card.v2-practice {
-    background: linear-gradient(135deg, #0E1B33 0%, #1B2A4E 60%, #2A1640 100%);
-    border: none;
-    color: #fff;
-    position:relative; overflow:hidden;
-  }
-  .v2-learning-card.v2-practice::before {
-    content:''; position:absolute; top:-40%; right:-20%; width:280px; height:280px;
-    background: radial-gradient(circle, rgba(230,0,126,0.32) 0%, transparent 70%);
-    pointer-events:none;
-  }
-  .v2-learning-card.v2-practice > * { position:relative; z-index:1; }
-  .v2-learning-card.v2-practice .v2-learning-label { color: var(--accent); }
-  .v2-learning-card.v2-practice .v2-learning-title { color: #fff; }
-  .v2-learning-card.v2-practice .v2-learning-desc { color: #C2C8D8; }
-  .v2-learning-card.v2-practice .v2-learning-go { color: #fff; }
-  .v2-learning-card.v2-practice:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(14,27,51,0.25); }
 
-  .v2-learning { display:flex; flex-direction:column; gap:12px; }
+  .v2-learning { display:flex; flex-direction:column; gap: 14px; }
   .v2-learning-card {
-    background:#fff; border:1px solid var(--grey-200);
-    padding: 16px 22px;
-    display:grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items:center;
+    background:#fff;
+    border:1px solid var(--grey-200);
+    padding: 18px 22px 18px;
+    display:flex; align-items:center; gap: 20px;
     transition: border-color .2s, transform .2s, box-shadow .2s;
     cursor:pointer;
     position:relative;
+    overflow:hidden;
   }
-  .v2-learning-card:hover { transform: translateY(-1px); border-color: var(--accent); box-shadow: 0 4px 14px rgba(14,27,51,0.06); }
-  .v2-learning-card > .v2-learning-text { display:flex; flex-direction:column; gap:3px; }
-  .v2-learning-label { font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
-  .v2-learning-title { font-size:17px; font-weight:500; letter-spacing:-0.02em; color:var(--ink); }
-  .v2-learning-desc { font-size:12.5px; color:var(--grey-600); line-height:1.45; }
-  .v2-learning-go { font-size:12px; font-weight:600; letter-spacing:0.06em; color:var(--ink); display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
-  @media (max-width:680px) { .v2-learning-card { grid-template-columns:1fr; gap:8px; } .v2-learning-go { justify-self:flex-start; } }
+  .v2-learning-card:hover { transform: translateY(-1px); border-color: var(--ink); box-shadow: 0 6px 18px rgba(14,27,51,0.07); }
+  .v2-learning-icon {
+    width: 44px; height: 44px;
+    background: var(--grey-50); border: 1px solid var(--grey-200);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--ink); flex-shrink: 0;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .v2-learning-icon svg { width: 22px; height: 22px; }
+  .v2-learning-card:hover .v2-learning-icon { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .v2-learning-text { flex: 1; min-width: 0; display:flex; flex-direction:column; gap: 3px; }
+  .v2-learning-label { font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); }
+  .v2-learning-title { font-size:17px; font-weight:600; letter-spacing:-0.015em; color:var(--ink); line-height: 1.25; }
+  .v2-learning-desc { font-size:12.5px; color:var(--grey-600); line-height:1.5; margin-top: 2px; }
+  .v2-learning-go {
+    flex-shrink: 0;
+    background: var(--ink); color: #fff;
+    font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform: uppercase;
+    padding: 10px 18px;
+    display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+    transition: background .2s, transform .15s;
+  }
+  .v2-learning-card:hover .v2-learning-go { background: var(--accent); transform: translateX(3px); }
+  @media (max-width: 680px) {
+    .v2-learning-card { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px; }
+    .v2-learning-go { align-self: flex-end; }
+  }
+
+  /* Practice diagnostic — promoted with dark gradient */
+  .v2-learning-card.v2-practice {
+    background: linear-gradient(135deg, #0E1B33 0%, #1B2A4E 60%, #2A1640 100%);
+    border-color: transparent;
+    color: #fff;
+  }
+  .v2-learning-card.v2-practice::after {
+    content:''; position:absolute; top:-50%; right:-15%; width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(230,0,126,0.35) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .v2-learning-card.v2-practice > * { position:relative; z-index:1; }
+  .v2-learning-card.v2-practice .v2-learning-icon { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); color: #fff; }
+  .v2-learning-card.v2-practice:hover .v2-learning-icon { background: var(--accent); border-color: var(--accent); }
+  .v2-learning-card.v2-practice .v2-learning-label { color: var(--accent); }
+  .v2-learning-card.v2-practice .v2-learning-title { color: #fff; }
+  .v2-learning-card.v2-practice .v2-learning-desc { color: #C2C8D8; }
+  .v2-learning-card.v2-practice .v2-learning-go { background: var(--accent); }
+  .v2-learning-card.v2-practice:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(14,27,51,0.3); }
+  .v2-learning-card.v2-practice:hover .v2-learning-go { background: #fff; color: var(--ink); }
 
   /* One-line diagnostic link under themes */
   .v2-themes-footer {
@@ -1080,19 +1105,37 @@
   .move-v2-dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
   .move-v2-title { font-size: clamp(24px, 3vw, 32px); font-weight:500; letter-spacing:-0.025em; line-height:1.15; color:var(--ink); margin: 8px 0 6px; }
   .move-v2-sub { font-size:14px; color:var(--grey-600); line-height:1.5; max-width: 70ch; margin: 0 0 12px; }
+  .move-v2-title { font-size: clamp(20px, 2.4vw, 28px) !important; max-width: 100%; word-wrap: break-word; }
   .move-v2-grid { display:grid; grid-template-columns: 1fr 1.05fr; gap: 22px; align-items: stretch; }
   @media (max-width: 980px) { .move-v2-grid { grid-template-columns: 1fr; } }
-  .move-v2-cards { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .move-v2-cards { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .move-v2-card {
-    background: var(--grey-50);
+    background: #fff;
     border: 1px solid var(--grey-200);
-    padding: 14px 16px 14px;
+    border-top: 3px solid var(--ink);
+    padding: 14px 16px 16px;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+    position: relative;
   }
-  .move-v2-card p { font-size: 12.5px; color:var(--ink-soft); line-height:1.5; margin:0; }
-  .move-v2-label { font-size: 9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--grey-600); margin-bottom: 8px; }
-  .move-v2-steps { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; }
-  .move-v2-steps li { font-size:12px; color:var(--ink-soft); line-height:1.45; display:flex; gap:8px; }
-  .move-v2-steps li span { color:var(--accent); font-weight:700; font-size:10px; min-width:14px; padding-top:2px; }
+  .move-v2-card:hover { border-color: var(--ink); box-shadow: 0 4px 14px rgba(14,27,51,0.05); transform: translateY(-1px); }
+  /* Per-card accent color & icon */
+  .move-v2-card:nth-child(1) { border-top-color: #0EA5A4; }
+  .move-v2-card:nth-child(2) { border-top-color: var(--accent); }
+  .move-v2-card:nth-child(3) { border-top-color: #6366F1; }
+  .move-v2-card:nth-child(4) { border-top-color: #F59E0B; }
+  .move-v2-card p { font-size: 12.5px; color:var(--ink-soft); line-height:1.55; margin:0; }
+  .move-v2-label {
+    font-size: 9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--ink); margin-bottom: 10px;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .move-v2-label svg { width: 12px; height: 12px; flex-shrink: 0; opacity: 0.85; }
+  .move-v2-steps { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+  .move-v2-steps li { font-size:12.5px; color:var(--ink-soft); line-height:1.5; display:flex; gap:10px; align-items:flex-start; }
+  .move-v2-steps li > span:first-child {
+    color: var(--accent); font-weight: 700; font-size: 11px;
+    min-width: 16px; padding-top: 1px;
+  }
 
   /* Email column */
   .move-v2-email {
@@ -1410,6 +1453,9 @@
       <!-- LEARNING TOOLS: stacked -->
       <div class="v2-learning">
         <div class="v2-learning-card" onclick="nav('offerings')">
+          <div class="v2-learning-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h18"/><circle cx="6" cy="7" r="1.2" fill="currentColor"/><circle cx="6" cy="12" r="1.2" fill="currentColor"/><circle cx="6" cy="17" r="1.2" fill="currentColor"/></svg>
+          </div>
           <div class="v2-learning-text">
             <span class="v2-learning-label">Explore</span>
             <h3 class="v2-learning-title">Browse the Storefront</h3>
@@ -1418,6 +1464,9 @@
           <span class="v2-learning-go">Open Storefront →</span>
         </div>
         <div class="v2-learning-card v2-practice" onclick="document.getElementById('diagnostic-container').scrollIntoView({behavior:'smooth', block:'start'})">
+          <div class="v2-learning-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="8 5 19 12 8 19 8 5"/></svg>
+          </div>
           <div class="v2-learning-text">
             <span class="v2-learning-label">Practice · Recommended</span>
             <h3 class="v2-learning-title">Run the diagnostic</h3>
@@ -2827,10 +2876,34 @@ function openMove(id) {
       <div class="move-v2-grid">
         <div class="move-v2-left">
           <div class="move-v2-cards">
-            <div class="move-v2-card"><div class="move-v2-label">When to use</div><p>${m.when}</p></div>
-            <div class="move-v2-card"><div class="move-v2-label">Why it works</div><p>${m.why}</p></div>
-            <div class="move-v2-card"><div class="move-v2-label">What you leave behind</div><p>${m.leave}</p></div>
-            <div class="move-v2-card"><div class="move-v2-label">How to run it</div><ol class="move-v2-steps">${m.steps.map((s,i)=>`<li><span>${i+1}</span>${s}</li>`).join('')}</ol></div>
+            <div class="move-v2-card">
+              <div class="move-v2-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+                When to use
+              </div>
+              <p>${m.when}</p>
+            </div>
+            <div class="move-v2-card">
+              <div class="move-v2-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7c.7.7 1 1.6 1 2.5V18h6v-.8c0-.9.3-1.8 1-2.5A7 7 0 0012 2z"/></svg>
+                Why it works
+              </div>
+              <p>${m.why}</p>
+            </div>
+            <div class="move-v2-card">
+              <div class="move-v2-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="1"/><polyline points="9 11 12 14 15 11"/><line x1="12" y1="5" x2="12" y2="14"/></svg>
+                What you leave behind
+              </div>
+              <p>${m.leave}</p>
+            </div>
+            <div class="move-v2-card">
+              <div class="move-v2-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+                How to run it
+              </div>
+              <ol class="move-v2-steps">${m.steps.map((s,i)=>`<li><span>${i+1}</span><span>${s}</span></li>`).join('')}</ol>
+            </div>
           </div>
         </div>
 
